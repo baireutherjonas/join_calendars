@@ -12,7 +12,7 @@
             "calendar_name":"calendarname"
         }]
     },
-    "davdestination":
+    "davtarget":
     {
         "url":"url_without_http",
         "username":"username",
