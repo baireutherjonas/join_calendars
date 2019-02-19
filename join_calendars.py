@@ -34,7 +34,7 @@ def main():
         print datetime.datetime.now()
         url = "https://" + data["davdestination"]["username"] + ":" + data["davdestination"]["password"] + "@" + data["davdestination"]["url"]
         print(url)
-        add_events_to_caldav(url_privat, data["davdestination"]["calendar_name"])
+        add_events_to_caldav(url, data["davdestination"]["calendar_name"])
 
 
         print datetime.datetime.now()
