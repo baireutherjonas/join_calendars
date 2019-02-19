@@ -1,7 +1,10 @@
 {
     "icalsource":
     {
-      "url": "url"
+        "cal":[
+            {"url": "url"}
+            
+        ]
     },
     "davsource":
     {

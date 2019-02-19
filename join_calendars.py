@@ -14,9 +14,11 @@ def main():
 
         #get events from ical
         for key, value in data["icalsource"].items():
-            print("source calendar: " + value)
-            create_events_from_ical(value)
-            print("number of events: " + str(len(eventlist)))
+            for calendar in value:
+                cal_url = calendar["url"]
+                print("source calendar: " + cal_url)
+                create_events_from_ical(cal_url)
+                print("number of events: " + str(len(eventlist)))
             
         #get events from dav
         for key, value in data["davsource"].items():
