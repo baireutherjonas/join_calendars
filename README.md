@@ -12,3 +12,6 @@ The target calender is a caldav calender.
 
 ## example of use
 Running the script on a Raspberry Pi every night.
+
+## License
+[Apache 2.0](./LICENSE)
