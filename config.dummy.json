@@ -1,0 +1,22 @@
+{
+    "icalsource":
+    {
+      "url": "url"
+    },
+    "davsource":
+    {
+        "cal":[{
+            "url":"url_without_http",
+            "username":"username",
+            "password":"password",
+            "calendar_name":"calendarname"
+        }]
+    },
+    "davdestination":
+    {
+        "url":"url_without_http",
+        "username":"username",
+        "password":"password",
+        "calendar_name":"calendarname"
+    }
+  }
