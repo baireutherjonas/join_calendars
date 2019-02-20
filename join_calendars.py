@@ -3,7 +3,7 @@ from caldav.elements import dav, cdav
 import urllib
 import os
 import json
-
+import datetime
 
 eventlist=[]
 
@@ -69,6 +69,10 @@ def add_events_to_caldav( url, calendar_name ):
                 except:
                     print("An exception occurred")
                     print(event)
+                    f = open("join_calendars.log", "a")
+                    f.write("##############################################")
+                    f.write(event)
+                    f.close()
     return
 
 
