@@ -49,7 +49,6 @@ def get_events_from_caldav( url, calendar_name ):
             loaded_events = 0
             for event in calendar.events():
                 eventlist.append(event.data)
-                print("load event " + str(loaded_events))
                 loaded_events = loaded_events + 1
     return
 
@@ -63,9 +62,13 @@ def add_events_to_caldav( url, calendar_name ):
             total_events = len(eventlist)
             saved_events = 0
             for event in eventlist:
-                calendar.add_event(event)
-                print("saved event " + str(saved_events) + " of " + str(total_events) + " events")
-                saved_events = saved_events + 1
+                try:
+                    calendar.add_event(event)
+                    print("saved event " + str(saved_events) + " of " + str(total_events) + " events")
+                    saved_events = saved_events + 1
+                except:
+                    print("An exception occurred")
+                    print(event)
     return
 
 
@@ -84,10 +87,10 @@ def create_events_from_ical(url):
                 event_basis = event_basis + line
             if("BEGIN:VEVENT" in line):
                 datatype = 1
+                eventdata = event_basis
             if("END:VEVENT" in line):
                 eventdata = eventdata + "END:VCALENDAR"
                 eventlist.append(eventdata)
-                eventdata = event_basis
                 datatype = 2
     os.remove(temp_file)
 
