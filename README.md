@@ -8,6 +8,7 @@ The target calender is a caldav calender.
 ## Setup
 * copy the config.dummy.json into a config.json file
 * insert the source and target calender data
+* install: ``sudo pip install caldav``
 * start the script: python join_calendars.py
 
 ## example of use
