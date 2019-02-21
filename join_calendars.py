@@ -4,6 +4,7 @@ import urllib
 import os
 import json
 import datetime
+import dateutil.relativedelta
 
 eventlist=[]
 
@@ -47,9 +48,15 @@ def get_events_from_caldav( url, calendar_name ):
         if "{'{DAV:}displayname': '"+calendar_name+"'}" == str(calendar.get_properties([dav.DisplayName(),])): 
             print ("Using calendar: " + str(calendar))
             loaded_events = 0
-            for event in calendar.events():
-                eventlist.append(event.data)
-                loaded_events = loaded_events + 1
+            startdate = datetime.datetime.now() - dateutil.relativedelta.relativedelta(years = 1)
+            enddate = startdate + dateutil.relativedelta.relativedelta(months=1)
+            while startdate < datetime.datetime.now() + dateutil.relativedelta.relativedelta(years = 3):
+                print("time: " + str(startdate) + " - " + str(enddate))
+                for event in calendar.date_search(startdate,enddate):
+                    eventlist.append(event.data)
+                    loaded_events = loaded_events + 1
+                startdate = enddate
+                enddate = startdate + dateutil.relativedelta.relativedelta(months=1)
     return
 
 def add_events_to_caldav( url, calendar_name ):
