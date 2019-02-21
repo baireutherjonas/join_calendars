@@ -87,7 +87,7 @@ def create_events_from_ical(url):
         for line in lines:
             if(datatype == 1):
                 eventdata = eventdata + line
-            if(datatype == 0):
+            if(datatype == 0 and "METHO" not in line):
                 event_basis = event_basis + line
             if("BEGIN:VEVENT" in line):
                 datatype = 1
