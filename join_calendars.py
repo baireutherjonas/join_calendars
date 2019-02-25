@@ -10,7 +10,7 @@ eventlist=[]
 
 def main():
     # Read Config
-    with open("config.json", "r") as read_file:
+    with open(os.path.dirname(os.path.realpath(__file__))+"/config.json", "r") as read_file:
         data = json.load(read_file)
 
         #get events from ical
