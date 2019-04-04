@@ -18,9 +18,12 @@ def main():
             for calendar in value:
                 cal_url = calendar["url"]
                 print("source calendar: " + cal_url)
-                create_events_from_ical(cal_url)
-                print("number of events: " + str(len(eventlist)))
-            
+                try:
+                    create_events_from_ical(cal_url)
+                    print("number of events: " + str(len(eventlist)))
+                except:
+                    print("failed to get events from: " + cal_url)
+
         #get events from dav
         for key, value in data["davsource"].items():
             for calendar in value:
@@ -29,8 +32,11 @@ def main():
                     cal_url = cal_url[-7:]
                 url = "https://" + calendar["username"] + ":" + calendar["password"] + "@" + cal_url
                 print("source calendar: " + url)
-                get_events_from_caldav(url,calendar["calendar_name"])
-                print("number of events: " + str(len(eventlist)))
+                try:
+                    get_events_from_caldav(url,calendar["calendar_name"])
+                    print("number of events: " + str(len(eventlist)))
+                except:
+                    print("failed to get events from: " + url)
 
         #write events to dav
         cal_url = data["davtarget"]["url"]
